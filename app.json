@@ -1,7 +1,7 @@
 {
     "name": "Photo Masking Petrie Museum Shabti",
     "short_name": "photomaskingPetrie",
-    "thumbnail": "http://i.imgur.com/IXNYFM2.png",
-    "description": "Photo masking application of Petrie Museum shabti",
-    "question": "Draw the outline of the main object in the picture"
+    "thumbnail": "http://adi.micropasts.org/wp-content/uploads/sites/3/2014/06/shabti_thumbnail.png",
+    "description": "Photo masking application of Petrie Museum Shabti",
+    "question": "Draw the outline of the Shabti in the picture"
 }
