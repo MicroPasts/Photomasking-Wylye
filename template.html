@@ -85,12 +85,12 @@ a.ol-full-screen-true:after {
 </style>
 
 <!--
-    Task DOM for loading the Flickr Images
+    Task DOM for loading the S3 Images
     It uses the class="skeleton" to identify the elements that belong to the
     task.
 -->
 <div class="row skeleton"> 
-    <div class="span12">
+    <div class="col-md-12">
     
         <div class="btn-group pull-right">
         		<button class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-eye-open"></i> Tutorial</button>
@@ -98,11 +98,11 @@ a.ol-full-screen-true:after {
         		<a class="btn btn-info btn-sm" id="newTask" href="../newtask"><i class="glyphicon glyphicon-picture"></i> Different photomask?</a>
         </div>
         
-        <h1 id="step1">Draw the outline and/or holes of the main object shown in the picture</h1>
+        <h1 id="step1">Draw the outline of the main object shown in the picture</h1>
         <div class="btn-group">
             <button id="status" type="button" class="btn btn-default btn-type disabled" name="loading" value="loading">Loading photo</button>
             <button id="outline" type="button" class="btn btn-default btn-type active" name="outline" value="outline">Outline</button>
-            <button id="holes" type="button" class="btn btn-default btn-type" name="holes" value="holes">Holes</button>
+            <!-- button id="holes" type="button" class="btn btn-default btn-type" name="holes" value="holes">Holes</button -->
         </div>
         <div class="btn-group">
             <button id="draw" type="button" class="btn btn-default btn-draw active" name="draw" value="draw">Draw</button>
@@ -221,12 +221,12 @@ a.ol-full-screen-true:after {
 
             <div id="1" class="modal-body" style="display:none">
                 <p>
-                In a few cases, there might be one or more holes
+                <!-- In a few cases, there might be one or more holes
                 in the object shown in the photograph (e.g. inside the loop
                 of a handle), and you can
                 click on the "Holes" button to be given an opportunity
                 to draw these in, as a second step, after you have created the initial outline
-                around the object. During the task, you can always return to this tutorial via the "Help" button. 
+                around the object. -->During the task, you can always return to this tutorial via the "Help" button. 
                 </p>
                 
                 <p>
@@ -308,7 +308,7 @@ pybossa.taskLoaded(function(task, deferred) {
         $("#edit").addClass("disabled");
         $("#delete").addClass("disabled");
         $("#outline").addClass("disabled");
-        $("#holes").addClass("disabled");
+        //$("#holes").addClass("disabled");
         $("#map").append(div_map);
         div_map.attr("id", "map_" + task.id);
         img.load(function() {
@@ -318,7 +318,7 @@ pybossa.taskLoaded(function(task, deferred) {
             $("#edit").removeClass("disabled");
             $("#delete").removeClass("disabled");
             $("#outline").removeClass("disabled");
-            $("#holes").removeClass("disabled");
+            //$("#holes").removeClass("disabled");
             $("#status").text("Photo loaded!");
         });
         img.attr('src', task.info.url_b).css('height', 460);
@@ -352,7 +352,7 @@ pybossa.taskLoaded(function(task, deferred) {
         })];
         
         task.source = new ol.source.Vector();
-        task.source_holes = new ol.source.Vector();
+        //task.source_holes = new ol.source.Vector();
         
         task.vector = new ol.layer.Vector({
           source: task.source,
@@ -376,27 +376,27 @@ pybossa.taskLoaded(function(task, deferred) {
                     })
           });
 
-        task.holes = new ol.layer.Vector({
-          source: task.source_holes,
+        //task.holes = new ol.layer.Vector({
+        //  source: task.source_holes,
           //styleFunction: function(feature, resolution) {
           //  return task.styleArray;
           //}
-          style: new ol.style.Style({
-                fill: new ol.style.Fill({
-                      color: 'rgba(255, 255, 255, 0.2)'
-                    }),
-                    stroke: new ol.style.Stroke({
-                      color: '#00CC99',
-                      width: 2
-                    }),
-                    image: new ol.style.Circle({
-                      radius: 7,
-                      fill: new ol.style.Fill({
-                        color: '#00CC99'
-                        })
-                      })
-                    })
-          });
+        //  style: new ol.style.Style({
+        //        fill: new ol.style.Fill({
+        //              color: 'rgba(255, 255, 255, 0.2)'
+        //            }),
+        //            stroke: new ol.style.Stroke({
+        //              color: '#00CC99',
+        //              width: 2
+        //            }),
+        //            image: new ol.style.Circle({
+        //              radius: 7,
+        //              fill: new ol.style.Fill({
+        //                color: '#00CC99'
+        //                })
+        //              })
+        //            })
+        //  });
 
         task.overlay = new ol.FeatureOverlay({
             style: new ol.style.Style({
@@ -425,12 +425,12 @@ pybossa.taskLoaded(function(task, deferred) {
                                                 featureOverlay: task.overlay });
 
         // Modifiers for vector holes
-        task.modify_holes = new ol.interaction.Modify({ 
-                                                layer: task.holes,
-                                                featureOverlay: task.overlay });
-        task.select_holes = new ol.interaction.Select({ 
-                                                layer: task.holes,
-                                                featureOverlay: task.overlay });
+        //task.modify_holes = new ol.interaction.Modify({ 
+        //                                        layer: task.holes,
+        //                                        featureOverlay: task.overlay });
+        //task.select_holes = new ol.interaction.Select({ 
+        //                                        layer: task.holes,
+        //                                        featureOverlay: task.overlay });
 
         task.map = new ol.Map({
           //interactions: ol.interaction.defaults().extend([task.select, task.modify, task.select_holes, task.modify_holes]),
@@ -450,7 +450,7 @@ pybossa.taskLoaded(function(task, deferred) {
             })
           , 
           task.vector,
-          task.holes,
+          //task.holes,
           ],
           renderer: 'canvas',
           target: 'map_' + task.id,
@@ -473,10 +473,10 @@ pybossa.taskLoaded(function(task, deferred) {
           type: 'Polygon',
         });
 
-        task.draw_holes = new ol.interaction.Draw({
-          source: task.source_holes,
-          type: 'Polygon',
-        });
+        //task.draw_holes = new ol.interaction.Draw({
+        ////  source: task.source_holes,
+        //  type: 'Polygon',
+        //});
 
         // When the first polygon is completed, remove the drawInteraction
         task.draw.on('drawend', function(evt) {
@@ -485,20 +485,20 @@ pybossa.taskLoaded(function(task, deferred) {
                 });
 
         // When the first hole is completed, remove the drawInteraction
-        task.draw_holes.on('drawend', function(evt) {
-                task.holes = true;
-                $("#btn-save").removeClass("disabled");
-                });
+        //task.draw_holes.on('drawend', function(evt) {
+        //        task.holes = true;
+        //        $("#btn-save").removeClass("disabled");
+        //        });
 
         task.map.addInteraction(task.draw);
 
         task.answer = {
                  'task_id': task.id,
                  'outline': [],
-                 'holes': [],
+        //         'holes': [],
                  'img': task.info.url_b};
         task.polygon = false;
-        task.holes = false;
+        //task.holes = false;
         }
     else {
         deferred.resolve(task);
@@ -516,17 +516,17 @@ pybossa.presentTask(function(task, deferred) {
         $('.btn-type').off('click').on('click', function(evt) {
             var answer = $(evt.target).attr("value");
             if (typeof answer != 'undefined'){
-                if (answer == 'holes') {
-                    $("#outline").removeClass('active');
-                    $("#holes").addClass('active');
-                    task.map.removeInteraction(task.draw);
-                    task.map.addInteraction(task.draw_holes);
-                }
-                else {
-                    $("#holes").removeClass('active');
+                //if (answer == 'holes') {
+                //    $("#outline").removeClass('active');
+                //    $("#holes").addClass('active');
+                //    task.map.removeInteraction(task.draw);
+                //    task.map.addInteraction(task.draw_holes);
+                //}
+                //else {
+                //    $("#holes").removeClass('active');
                     $("#outline").addClass('active');
                     task.map.addInteraction(task.draw);
-                    task.map.removeInteraction(task.draw_holes);
+                //    task.map.removeInteraction(task.draw_holes);
                 }
             }
         });
@@ -543,11 +543,11 @@ pybossa.presentTask(function(task, deferred) {
                         task.map.removeInteraction(task.select);
                         task.map.addInteraction(task.draw);
                     }
-                    else {
-                        task.map.removeInteraction(task.modify_holes);
-                        task.map.removeInteraction(task.select_holes);
-                        task.map.addInteraction(task.draw_holes);
-                    }
+                    //else {
+                    //    task.map.removeInteraction(task.modify_holes);
+                    //    task.map.removeInteraction(task.select_holes);
+                    //    task.map.addInteraction(task.draw_holes);
+                    //}
                 }
                 if (answer == 'edit') {
                     $("#draw").removeClass("active");
@@ -557,11 +557,11 @@ pybossa.presentTask(function(task, deferred) {
                         task.map.addInteraction(task.select);
                         task.map.addInteraction(task.modify);
                     }
-                    else {
-                        task.map.removeInteraction(task.draw_holes);
-                        task.map.addInteraction(task.select_holes);
-                        task.map.addInteraction(task.modify_holes);
-                    }
+                    //else {
+                    //    task.map.removeInteraction(task.draw_holes);
+                    //    task.map.addInteraction(task.select_holes);
+                    //    task.map.addInteraction(task.modify_holes);
+                    //}
                 }
 
                 if (answer == 'delete') {
@@ -581,19 +581,17 @@ pybossa.presentTask(function(task, deferred) {
                         $("#draw").removeClass("active");
                         $("#edit").removeClass("active");
                         $("#delete").addClass("active");
-                        var features = task.source_holes.getAllFeatures();
-                        for(i=0;i<features.length;i++) {
-                            task.source_holes.removeFeature(features[i]);
-                        }
-                        task.holes = false;
+                        //var features = task.source_holes.getAllFeatures();
+                        //for(i=0;i<features.length;i++) {
+                        //    task.source_holes.removeFeature(features[i]);
+                        //}
+                        //task.holes = false;
                         $("#draw").addClass("active");
                         $("#delete").removeClass("active");
                     }
                 }
 
                 }});
-
-
 
         $('.btn-answer').off('click').on('click', function(evt) {
             var answer = $(evt.target).attr("value");
@@ -615,16 +613,16 @@ pybossa.presentTask(function(task, deferred) {
                     //    'img': task.info.url_b};
                     task.answer.outline = polygons;
 
-                    if (task.holes) {
-                        var features = task.source_holes.getAllFeatures();
-                        var polygons = [];
-                        for(i=0;i<features.length;i++) {
-                            var g = features[i].getGeometry();
-                            polygons.push(g.getCoordinates());
-                        }
+                    //if (task.holes) {
+                    //    var features = task.source_holes.getAllFeatures();
+                    //    var polygons = [];
+                    //    for(i=0;i<features.length;i++) {
+                    //        var g = features[i].getGeometry();
+                    //        polygons.push(g.getCoordinates());
+                    //    }
 
-                        task.answer.holes = polygons;
-                    }
+                    //    task.answer.holes = polygons;
+                    //}
 
                     pybossa.saveTask(task.id, task.answer).done(function() {
                     	$("#success").fadeIn(500).fadeOut(5500);
@@ -652,5 +650,5 @@ pybossa.presentTask(function(task, deferred) {
         
 });
 
-pybossa.run('photomaskingArreton');
+pybossa.run('photomaskingPetrie');
 </script>
