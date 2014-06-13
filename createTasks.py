@@ -164,7 +164,7 @@ def run(app_config, options):
     def add_photo_tasks(app):
         # First of all we get the URL photos
         # Then, we have to create a set of tasks for the application
-        # For this, we get first the photo URLs from Flickr
+        # For this, we get first the photo URLs from S3
         photos = get_s3_photos(options.s3_bucket_folder)
         question = app_config['question']
         #[create_photo_task(app, p, question, priority=random.random()) for p in photos]
