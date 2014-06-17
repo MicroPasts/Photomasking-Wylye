@@ -515,19 +515,10 @@ pybossa.presentTask(function(task, deferred) {
         // Code for drawing outlines or holes
         $('.btn-type').off('click').on('click', function(evt) {
             var answer = $(evt.target).attr("value");
-            //if (typeof answer != 'undefined'){
-                //if (answer == 'holes') {
-                //    $("#outline").removeClass('active');
-                //    $("#holes").addClass('active');
-                //    task.map.removeInteraction(task.draw);
-                //    task.map.addInteraction(task.draw_holes);
-                //}
-                //else {
-                //    $("#holes").removeClass('active');
+            
                     $("#outline").addClass('active');
                     task.map.addInteraction(task.draw);
-                //    task.map.removeInteraction(task.draw_holes);
-                //}
+            
             }
         });
 
