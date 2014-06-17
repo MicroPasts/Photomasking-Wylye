@@ -61,7 +61,7 @@ To add all images in the root folder run:
 ```
 To add all images in a subfolder:
 ```bash
-    $ python createTasks.py -s server -k api-key -c -x -b  "arreton"
+    $ python createTasks.py -s server -k api-key -c -x -b  "micropasts-petrie"
 ```
 
 If the application had already some tasks, the previous command will add
