@@ -156,7 +156,7 @@ a.ol-full-screen-true:after {
         <!-- Progress bar for the user -->
         <span id="total" class="label label-inverse"></span></p>
         <div class="progress progress-striped">
-            <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
+            <div id="progress" class="progress-bar" role="progressbar" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
         </div>
 
         <div id="answer"> <!-- Start DIV for the submission buttons -->
@@ -515,7 +515,7 @@ pybossa.presentTask(function(task, deferred) {
         // Code for drawing outlines or holes
         $('.btn-type').off('click').on('click', function(evt) {
             var answer = $(evt.target).attr("value");
-            if (typeof answer != 'undefined'){
+            //if (typeof answer != 'undefined'){
                 //if (answer == 'holes') {
                 //    $("#outline").removeClass('active');
                 //    $("#holes").addClass('active');
@@ -527,7 +527,7 @@ pybossa.presentTask(function(task, deferred) {
                     $("#outline").addClass('active');
                     task.map.addInteraction(task.draw);
                 //    task.map.removeInteraction(task.draw_holes);
-                }
+                //}
             }
         });
 
