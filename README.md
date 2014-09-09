@@ -1,4 +1,4 @@
-PyBossa photo masking application for Petrie Museum's Shabti
+PyBossa photo masking application for Olduvai Gorge Handaxes
 ============================================================
 
 This application has three files:

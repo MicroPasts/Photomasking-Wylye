@@ -277,7 +277,6 @@ a.ol-full-screen-true:after {
 <script>
 function loadUserProgress() {
     pybossa.userProgress('photomaskingPetrie').done(function(data){
-    	console.log(data.done);
         if ((data.done == 1) && ($.cookie('survey') === undefined)){
            $("#survey").modal('show');
            $.cookie('survey', 'shown', { path: '/'});
