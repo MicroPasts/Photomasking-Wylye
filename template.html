@@ -276,14 +276,14 @@ a.ol-full-screen-true:after {
 
 <script>
 function loadUserProgress() {
-    pybossa.userProgress('photomaskingPetrie').done(function(data){
-        if ((data.done == 1) && ($.cookie('survey') === undefined)){
+    pybossa.userProgress('photomaskingHandaxes').done(function(data){
+        if ((data.done == 1) && ($.cookie('surveyHandaxes') === undefined)){
            $("#survey").modal('show');
-           $.cookie('survey', 'shown', { path: '/'});
+           $.cookie('surveyHandaxes', 'shown', { path: '/'});
         }
-        if ((data.done == 25) && ($.cookie('survey25') === undefined)){
+        if ((data.done == 25) && ($.cookie('survey25Handaxes') === undefined)){
            $("#survey25").modal('show');
-           $.cookie('survey25', 'shown', { path: '/'});
+           $.cookie('survey25Handaxes', 'shown', { path: '/'});
         }
         var pct = Math.round((data.done*100)/data.total);
         $("#progress").css("width", pct.toString() +"%");
@@ -649,5 +649,5 @@ pybossa.presentTask(function(task, deferred) {
         
 });
 
-pybossa.run('photomaskingPetrie');
+pybossa.run('photomaskingHandaxes');
 </script>
