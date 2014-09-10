@@ -52,16 +52,16 @@ This application supports public S3 buckets. Adding pictures/photos from
 a folder in a S3 bucket is as simple as running the following commands.
 
 ```bash
-    $ python createTasks.py -s server -k api-key -c -x -b  "folder/in/s3/"
+    $ python createTasks.py -s server -k api-key -c -x -b "folder/in/s3/"
 ```
 To add all images in the root folder run:
 
 ```bash
-    $ python createTasks.py -s server -k api-key -c -x -b  "/"
+    $ python createTasks.py -s server -k api-key -c -x -b "/"
 ```
 To add all images in a subfolder:
 ```bash
-    $ python createTasks.py -s server -k api-key -c -x -b  "micropasts-petrie"
+    $ python createTasks.py -s server -k api-key -c -x -b "micropasts-olduvai"
 ```
 
 If the application had already some tasks, the previous command will add
