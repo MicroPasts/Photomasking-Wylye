@@ -277,6 +277,9 @@ a.ol-full-screen-true:after {
 <script>
 function loadUserProgress() {
     pybossa.userProgress('photomaskingHandaxes').done(function(data){
+    	
+    	console.log('Tasks done so far: ' + data.done);
+    	
         if ((data.done == 1) && ($.cookie('surveyHandaxes') === undefined)){
            $("#survey").modal('show');
            $.cookie('surveyHandaxes', 'shown', { path: '/'});
@@ -319,7 +322,10 @@ pybossa.taskLoaded(function(task, deferred) {
             $("#status").text("Photo loaded!");
         });
         img.attr('src', task.info.url_b).css('height', 460);
+        
+        //Log the url of image being masked.
         console.log(task.info.url_b);
+        
         img.addClass('img-polaroid');
         task.info.image = img;
 
@@ -595,7 +601,9 @@ pybossa.presentTask(function(task, deferred) {
         $('.btn-answer').off('click').on('click', function(evt) {
             var answer = $(evt.target).attr("value");
             if (typeof answer != 'undefined'){
-                //console.log(answer);
+                //Log the answer submitted to console
+                console.log(answer);
+                
                 //console.log(task.map.source.features);
                 console.log(task.source.features);
 
