@@ -175,13 +175,11 @@ a.ol-full-screen-true:after {
         <h4 class="modal-title">Hey there! Do you want to help us?</h4>
       </div>
       <div class="modal-body">
-        Thanks for contributing one task for the project. We are interested in knowing how you found out about us. <strong>Could you please answer two questions in a short survey?</strong>
-       
-       <!-- <iframe src="https://docs.google.com/forms/d/1Foe1CCfd4K_ZmtX2W8MDsoSjjDi5zd5DLgG7yRVn2HQ/viewform?embedded=true" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>-->
+        Thanks for contributing one task for the project. We are interested in knowing how you found out about us. <strong>Could you please answer two questions in a short survey?</strong>      
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Skip</button>
-        <a class="btn btn-large btn-success" href="https://docs.google.com/forms/d/10WSSX_AHBdCFsz43-664GJMy1juIKfdGI7zubEctxuY/viewform?embedded=true">Of course! Take me to the survey!</a>
+        <a class="btn btn-large btn-success" href="https://docs.google.com/forms/d/1Kgw8cvcufm-77PC2t_PL_b4y1_Tb9wJseimmb3cQIn4/viewform?embedded=true">Of course! Take me to the survey!</a>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -199,7 +197,7 @@ a.ol-full-screen-true:after {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Skip</button>
-        <a class="btn btn-large btn-success" href="https://docs.google.com/forms/d/1dzRKGGPqjaLpCd6vC73VXzoCtspqDJ71Q2WT4R6uiNs/viewform?embedded=true">Of course! Take me to the survey!</a>
+        <a class="btn btn-large btn-success" href="https://docs.google.com/forms/d/1uczUGGYbrQ2FQfTtM8j4vfGr2qwcCMW6PLwzfvZZ6kI/viewform?embedded=true">Of course! Take me to the survey!</a>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -217,8 +215,7 @@ a.ol-full-screen-true:after {
                 <p>
                 This application is very simple (but it does not yet work on mobile devices). When you participate, the platform will load a photograph of an archaeological artefact. Once the image has been loaded, you will be asked to click or tap around the edge of the artefact in order to define a polygon outline. Click once every time you wish to add a point along the edge of the polygon and your final point will snap back onto the one you started with. You can draw one polygon around the entire object or instead draw a series of overlapping polygons if you prefer. In general, we would like you to draw your polygon(s) very slightly inside the actual edge of the artefact. This is because we don't want background pixels near this edge to create a fuzzy border, and we don't need to worry so much about losing a bit of the artefact edge, as the missing few pixels are very likely to appear in one of the other photographs (at least 40 overlapping photographs are likely to exist for each object to support the construction of the 3D model). An example of a successful outline is shown below:
                 </p>
-                <img src="http://micropasts.org/wp-content/uploads/2014/09/Handaxe_Polygon.png" width="100%" class="img-polaroid"
-                     alt="An example of an artefact photograph whose outline has been defined" />
+                <img src="http://micropasts.org/wp-content/uploads/2014/09/Handaxe_Polygon.png" width="100%" class="img-polaroid" alt="An example of an artefact photograph whose outline has been defined" />
             </div>
 
             <div id="1" class="modal-body" style="display:none">
@@ -276,17 +273,17 @@ a.ol-full-screen-true:after {
 
 <script>
 function loadUserProgress() {
-    pybossa.userProgress('photomaskingHandaxes').done(function(data){
+    pybossa.userProgress('photomaskingWylye').done(function(data){
     	
     	console.log('Tasks done so far: ' + data.done);
     	
-        if ((data.done == 1) && ($.cookie('surveyHandaxes') === undefined)){
+        if ((data.done == 1) && ($.cookie('surveyPhotoMask') === undefined)){
            $("#survey").modal('show');
-           $.cookie('surveyHandaxes', 'shown', { path: '/'});
+           $.cookie('surveyPhotoMask', 'shown', { path: '/'});
         }
-        if ((data.done == 25) && ($.cookie('survey25Handaxes') === undefined)){
+        if ((data.done == 25) && ($.cookie('survey25PhotoMask') === undefined)){
            $("#survey25").modal('show');
-           $.cookie('survey25Handaxes', 'shown', { path: '/'});
+           $.cookie('survey25PhotoMask', 'shown', { path: '/'});
         }
         var pct = Math.round((data.done*100)/data.total);
         $("#progress").css("width", pct.toString() +"%");
@@ -596,8 +593,6 @@ pybossa.presentTask(function(task, deferred) {
 
                 }});
 
-
-
         $('.btn-answer').off('click').on('click', function(evt) {
             var answer = $(evt.target).attr("value");
             if (typeof answer != 'undefined'){
@@ -657,5 +652,5 @@ pybossa.presentTask(function(task, deferred) {
         
 });
 
-pybossa.run('photomaskingHandaxes');
+pybossa.run('photomaskingWylye');
 </script>

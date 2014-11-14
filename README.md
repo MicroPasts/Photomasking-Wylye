@@ -1,5 +1,5 @@
-PyBossa photo masking application for Olduvai Gorge Handaxes
-============================================================
+PyBossa photo masking application for Wylye Hoard palstaves
+===========================================================
 
 This application has three files:
 
