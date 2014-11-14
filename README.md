@@ -7,7 +7,7 @@ This application has three files:
 *  template.html: the view for every task and deal with the data of the answers.
 *  tutorial.html: a simple tutorial for the volunteers.
 
-![alt screenshot](http://micropasts.org/wp-content/uploads/2014/09/OlduvaiApp.png)
+![alt screenshot](http://micropasts.org/wp-content/uploads/2014/11/Wylye_readme.png)
 
 Funded by
 =========
@@ -61,7 +61,7 @@ To add all images in the root folder run:
 ```
 To add all images in a subfolder:
 ```bash
-    $ python createTasks.py -s server -k api-key -c -x -b "micropasts-olduvai"
+    $ python createTasks.py -s server -k api-key -c -x -b "micropasts-palstaves"
 ```
 
 If the application had already some tasks, the previous command will add
